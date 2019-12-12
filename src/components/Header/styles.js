@@ -6,6 +6,7 @@ export const Container = styled.header`
   align-items: center;
   justify-content: space-between;
   padding: 16px;
+  margin-bottom: 16px;
 `;
 
 export const Logo = styled.img`
