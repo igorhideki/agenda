@@ -1,11 +1,14 @@
 import React from 'react';
 
+import './config/ReactotronConfig';
+
+import Home from '~/pages/Home';
 import GlobalStyles from '~/styles/global';
 
 function App() {
   return (
     <>
-      <h1>Agenda</h1>
+      <Home />
       <GlobalStyles />
     </>
   );
