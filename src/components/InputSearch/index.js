@@ -3,7 +3,7 @@ import React, { useRef } from 'react';
 import { Container } from './styles';
 import icSearch from '~/assets/ic-search.svg';
 
-export default function InputSeach() {
+export default function InputSearch() {
   const ref = useRef();
 
   function handleFocus() {
