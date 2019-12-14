@@ -6,14 +6,28 @@ import { colors } from '../../styles/variables';
 export const Container = styled.button`
   font-size: 14px;
   font-weight: 500;
-  height: 40px;
   padding: 0 16px;
-  border-radius: 20px;
   transition: background 0.2s;
   display: flex;
   align-items: center;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16);
   border: solid 1px rgba(255, 255, 255, 0.16);
+  opacity: ${props => (props.disabled ? 0.32 : 1)};
+
+  ${props => {
+    switch (props.size) {
+      case 'small':
+        return css`
+          height: 32px;
+          border-radius: 16px;
+        `;
+      default:
+        return css`
+          height: 40px;
+          border-radius: 20px;
+        `;
+    }
+  }}
 
   ${props => {
     switch (props.color) {
