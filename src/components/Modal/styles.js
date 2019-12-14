@@ -34,6 +34,8 @@ export const Header = styled.header`
 
 export const Body = styled.div`
   padding: 24px;
+  min-height: 90px;
+  font-size: 14px;
 `;
 
 export const Footer = styled.footer`
