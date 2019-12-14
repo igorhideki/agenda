@@ -9,6 +9,7 @@ export default function Modal({
   title,
   onCancel,
   onConfirm,
+  confirmDisabled,
   cancelText,
   confirmText,
   isOpen,
@@ -26,7 +27,12 @@ export default function Modal({
           <Button color="secondary" size="small" onClick={onCancel}>
             {cancelText}
           </Button>
-          <Button color="primary" size="small" onClick={onConfirm}>
+          <Button
+            color="primary"
+            size="small"
+            disabled={confirmDisabled}
+            onClick={onConfirm}
+          >
             {confirmText}
           </Button>
         </Footer>
@@ -49,6 +55,7 @@ Modal.propTypes = {
   cancelText: PropTypes.string,
   confirmText: PropTypes.string,
   isOpen: PropTypes.bool,
+  confirmDisabled: PropTypes.bool,
 };
 
 Modal.defaultProps = {
@@ -57,4 +64,5 @@ Modal.defaultProps = {
   cancelText: 'Cancelar',
   confirmText: 'Confirmar',
   isOpen: false,
+  confirmDisabled: false,
 };
