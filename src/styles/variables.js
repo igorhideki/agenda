@@ -4,7 +4,8 @@ export const colors = {
   lightGray: '#e4e7f4',
   gray: '#9198af',
   darkGray: '#2a2d3b',
-  borderGray: '#e1e1e1',
+  borderLightGray: '#e1e1e1',
+  borderGray: '#c0c3d2',
   bgGray: '#f8f9fd',
   pinkLight: '#fff3f2',
 };
