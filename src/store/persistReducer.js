@@ -6,7 +6,7 @@ export default reducers => {
     {
       key: 'agenda',
       storage,
-      whitelist: ['contacts'],
+      whitelist: ['schedule'],
     },
     reducers
   );

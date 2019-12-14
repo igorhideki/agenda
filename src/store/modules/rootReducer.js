@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
 
-import contacts from './contacts/reducer';
+import schedule from './schedule/reducer';
 
-export default combineReducers({ contacts });
+export default combineReducers({ schedule });
