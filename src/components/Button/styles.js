@@ -13,6 +13,7 @@ export const Container = styled.button`
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16);
   border: solid 1px rgba(255, 255, 255, 0.16);
   opacity: ${props => (props.disabled ? 0.32 : 1)};
+  cursor: ${props => (props.disabled ? 'not-allowed' : 'pointer')};
 
   ${props => {
     switch (props.size) {
