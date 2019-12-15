@@ -1,6 +1,6 @@
 # Ubook
 
-Aplicação desenvolvida para agendar de contatos no navegador. :telephone_receiver: :book:
+Aplicação desenvolvida para agendar contatos no navegador.
 
 O Ubook foi desenvolvido utilizando [ReactJS](https://reactjs.org).
 
