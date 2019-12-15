@@ -96,7 +96,7 @@ export default function ContactModal() {
         onCancel={onCancel}
         confirmDisabled={isConfirmButtonDisabled}
         onConfirm={onConfirm}
-        title="Criar novo contato"
+        title={isEditing ? 'Editar contato' : 'Criar novo contato'}
         confirmText="Salvar"
       >
         <div>
