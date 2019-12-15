@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { darken } from 'polished';
 
 import { colors } from '~/styles/variables';
 
@@ -35,15 +36,6 @@ export const Container = styled.div`
 
       tr + tr > td {
         border-top: 1px solid ${colors.borderLightGray};
-      }
-
-      tr {
-        background-color: #fff;
-        transition: background-color 0.2s;
-
-        &:hover {
-          background-color: ${colors.pinkLight};
-        }
       }
     }
   }
@@ -86,5 +78,15 @@ export const Actions = styled.td`
     > button + button {
       margin-left: 24px;
     }
+  }
+`;
+
+export const TableRow = styled.tr`
+  background-color: ${props => (props.highlight ? colors.pinkLight : '#fff')};
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: ${props =>
+      props.highlight ? darken(0.02, colors.pinkLight) : colors.pinkLight};
   }
 `;

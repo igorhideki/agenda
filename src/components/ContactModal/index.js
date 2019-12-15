@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import {
   addNewContact,
   showContactModal,
+  removeContactHighlight,
 } from '~/store/modules/schedule/actions';
 
 import Modal from '~/components/Modal';
@@ -33,7 +34,21 @@ export default function ContactModal() {
   }
 
   function onConfirm() {
-    dispatch(addNewContact({ name, email, phone }));
+    const id = String(new Date().getTime());
+
+    dispatch(
+      addNewContact({
+        id,
+        name,
+        email,
+        phone,
+      })
+    );
+
+    setTimeout(() => {
+      dispatch(removeContactHighlight(id));
+    }, 10000);
+
     clearForm();
     closeModal();
   }

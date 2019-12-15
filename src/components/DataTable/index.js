@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { deleteContact } from '~/store/modules/schedule/actions';
 
 import ConfirmationModal from '~/components/ConfimationModal';
-import { Container, Avatar, Actions } from './styles';
+import { Container, Avatar, Actions, TableRow } from './styles';
 
 import icEdit from '~/assets/ic-edit.svg';
 import icDelete from '~/assets/ic-delete.svg';
@@ -67,7 +67,7 @@ export default function DataTable({ headers, data }) {
           </thead>
           <tbody>
             {data.map(item => (
-              <tr key={item.id}>
+              <TableRow key={item.id} highlight={item.highlight}>
                 <td>
                   <Avatar color={getBackgroundColor(item.name)}>
                     {getInitialName(item.name)}
@@ -86,7 +86,7 @@ export default function DataTable({ headers, data }) {
                     </button>
                   </div>
                 </Actions>
-              </tr>
+              </TableRow>
             ))}
           </tbody>
         </table>
@@ -108,6 +108,7 @@ DataTable.propTypes = {
       name: PropTypes.string,
       email: PropTypes.string,
       phone: PropTypes.string,
+      active: PropTypes.bool,
     })
   ).isRequired,
 };
