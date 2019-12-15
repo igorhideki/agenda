@@ -1,21 +1,39 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import {
   addNewContact,
   showContactModal,
   removeContactHighlight,
+  editContact,
+  addContactSelected,
 } from '~/store/modules/schedule/actions';
 
 import Modal from '~/components/Modal';
 import { Container } from './styles';
 
 export default function ContactModal() {
+  const isOpen = useSelector(state => state.schedule.isOpenContactModal);
+  const isEditing = useSelector(state => state.schedule.isEditing);
+
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
 
-  const isOpen = useSelector(state => state.schedule.isOpenContactModal);
+  const contactSelected = useSelector(state => state.schedule.contactSelected);
+
+  useEffect(() => {
+    if (isEditing) {
+      setName(contactSelected.name);
+      setEmail(contactSelected.email);
+      setPhone(contactSelected.phone);
+    }
+  }, [
+    isEditing,
+    contactSelected.name,
+    contactSelected.email,
+    contactSelected.phone,
+  ]);
 
   const dispatch = useDispatch();
 
@@ -34,20 +52,33 @@ export default function ContactModal() {
   }
 
   function onConfirm() {
-    const id = String(new Date().getTime());
+    if (isEditing) {
+      dispatch(
+        editContact({
+          id: contactSelected.id,
+          name,
+          email,
+          phone,
+        })
+      );
 
-    dispatch(
-      addNewContact({
-        id,
-        name,
-        email,
-        phone,
-      })
-    );
+      dispatch(addContactSelected({}));
+    } else {
+      const id = String(new Date().getTime());
 
-    setTimeout(() => {
-      dispatch(removeContactHighlight(id));
-    }, 10000);
+      dispatch(
+        addNewContact({
+          id,
+          name,
+          email,
+          phone,
+        })
+      );
+
+      setTimeout(() => {
+        dispatch(removeContactHighlight(id));
+      }, 10000);
+    }
 
     clearForm();
     closeModal();

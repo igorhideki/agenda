@@ -2,7 +2,11 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { deleteContact } from '~/store/modules/schedule/actions';
+import {
+  deleteContact,
+  showContactModal,
+  addContactSelected,
+} from '~/store/modules/schedule/actions';
 
 import ConfirmationModal from '~/components/ConfimationModal';
 import { Container, Avatar, Actions, TableRow } from './styles';
@@ -52,6 +56,14 @@ export default function DataTable({ headers, data }) {
     dispatch(deleteContact(itemSelectedId));
   }
 
+  function handleEdit(contact) {
+    const isOpenContactModal = true;
+    const isEditing = true;
+
+    dispatch(addContactSelected(contact));
+    dispatch(showContactModal(isOpenContactModal, isEditing));
+  }
+
   return (
     <>
       <Container>
@@ -78,7 +90,7 @@ export default function DataTable({ headers, data }) {
                 <td>{item.phone}</td>
                 <Actions>
                   <div>
-                    <button type="button">
+                    <button type="button" onClick={() => handleEdit(item)}>
                       <img src={icEdit} alt="ícone de lápis" />
                     </button>
                     <button type="button" onClick={() => handleDelete(item.id)}>

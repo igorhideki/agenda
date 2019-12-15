@@ -19,9 +19,23 @@ export function removeContactHighlight(id) {
   };
 }
 
-export function showContactModal(flag) {
+export function editContact({ id, name, email, phone }) {
+  return {
+    type: '@schedule/EDIT_CONTACT',
+    payload: { id, name, email, phone },
+  };
+}
+
+export function addContactSelected(data) {
+  return {
+    type: '@schedule/ADD_CONTACT_SELECTED',
+    payload: data,
+  };
+}
+
+export function showContactModal(isOpen, isEditing = false) {
   return {
     type: '@schedule/SHOW_CONTACT_MODAL',
-    payload: flag,
+    payload: { isOpen, isEditing },
   };
 }
