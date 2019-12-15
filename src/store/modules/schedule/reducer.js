@@ -3,6 +3,7 @@ const INITIAL_STATE = {
   isOpenContactModal: false,
   isEditing: false,
   contactSelected: {},
+  searchText: '',
 };
 
 export default function schedule(state = INITIAL_STATE, action) {
@@ -64,6 +65,28 @@ export default function schedule(state = INITIAL_STATE, action) {
             return contact;
           }),
         ],
+      };
+
+    case '@schedule/SET_SEARCH_TEXT':
+      return {
+        ...state,
+        searchText: action.payload.text,
+      };
+
+    case '@schedule/CLEAR_ALL_HIGHLIGHT':
+      return {
+        ...state,
+        contacts: state.contacts.map(contact => {
+          return { ...contact, highlight: false };
+        }),
+      };
+
+    case '@schedule/CLEAR_STATES':
+      return {
+        ...state,
+        isOpenContactModal: INITIAL_STATE.isOpenContactModal,
+        isEditing: INITIAL_STATE.isEditing,
+        searchText: INITIAL_STATE.searchText,
       };
 
     default:

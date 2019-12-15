@@ -39,3 +39,22 @@ export function showContactModal(isOpen, isEditing = false) {
     payload: { isOpen, isEditing },
   };
 }
+
+export function setSearchText(text) {
+  return {
+    type: '@schedule/SET_SEARCH_TEXT',
+    payload: { text },
+  };
+}
+
+export function clearAllHighlights() {
+  return {
+    type: '@schedule/CLEAR_ALL_HIGHLIGHT',
+  };
+}
+
+export function clearStates() {
+  return {
+    type: '@schedule/CLEAR_STATES',
+  };
+}
