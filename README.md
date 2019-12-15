@@ -2,7 +2,7 @@
 
 Aplicação desenvolvida para agendar contatos no navegador.
 
-O Ubook foi desenvolvido utilizando [ReactJS](https://reactjs.org).
+O **Ubook** foi desenvolvido utilizando [ReactJS](https://reactjs.org).
 
 Outras tecnologias utilizadas neste projeto:
 
