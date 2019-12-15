@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import Modal from '~/components/Modal';
 
@@ -17,3 +18,9 @@ export default function ConfirmationModal({ isOpen, onCancel, onConfirm }) {
     </Modal>
   );
 }
+
+ConfirmationModal.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
+  onCancel: PropTypes.func.isRequired,
+  onConfirm: PropTypes.func.isRequired,
+};
