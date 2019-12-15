@@ -32,6 +32,7 @@ export const Container = styled.div`
       td {
         height: 40px;
         font-weight: normal;
+        padding-right: 16px;
       }
 
       tr + tr > td {
@@ -59,7 +60,6 @@ export const Actions = styled.td`
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    margin-right: 16px;
 
     button {
       margin: 0;
