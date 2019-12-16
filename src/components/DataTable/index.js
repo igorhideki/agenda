@@ -7,6 +7,8 @@ import {
   showContactModal,
   addContactSelected,
 } from '~/store/modules/schedule/actions';
+import getFirstLetterOfName from '~/utils/getFirstLetterOfName';
+import getBackgroundColorByName from '~/utils/getBackgroundColorByName';
 
 import ConfirmationModal from '~/components/ConfimationModal';
 import { Container, Avatar, Actions, TableRow } from './styles';
@@ -18,28 +20,6 @@ export default function DataTable({ headers, data }) {
   const [isOpen, setIsOpen] = useState(false);
   const [itemSelectedId, setItemSelectedId] = useState('');
   const dispatch = useDispatch();
-
-  function getInitialName(name) {
-    return name[0].toUpperCase();
-  }
-
-  function getBackgroundColor(name) {
-    const letter = getInitialName(name);
-    const colors = [
-      '#fa8d68', // A
-      '#90d26c', // B
-      '#68a0fa', // C
-      '#fab668', // D
-      '#8368fa', // E
-      '#fa68b5', // F
-      '#5fe2c4', // G
-      '#f55a5a', // H
-    ];
-    const indexFistLetter = 65;
-    const index = (letter.charCodeAt() - indexFistLetter) % colors.length;
-
-    return colors[index];
-  }
 
   function handleDelete(id) {
     setIsOpen(true);
@@ -81,8 +61,8 @@ export default function DataTable({ headers, data }) {
             {data.map(item => (
               <TableRow key={item.id} highlight={item.highlight}>
                 <td>
-                  <Avatar color={getBackgroundColor(item.name)}>
-                    {getInitialName(item.name)}
+                  <Avatar color={getBackgroundColorByName(item.name)}>
+                    {getFirstLetterOfName(item.name)}
                   </Avatar>
                 </td>
                 <td>{item.name}</td>
