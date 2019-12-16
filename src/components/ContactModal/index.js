@@ -8,6 +8,7 @@ import {
   editContact,
   addContactSelected,
 } from '~/store/modules/schedule/actions';
+import phoneMask from '~/utils/phoneMask';
 
 import Modal from '~/components/Modal';
 import { Container } from './styles';
@@ -89,6 +90,12 @@ export default function ContactModal() {
     closeModal();
   }
 
+  function handlePhone(e) {
+    const { value } = e.target;
+
+    setPhone(phoneMask(value));
+  }
+
   return (
     <Container>
       <Modal
@@ -122,12 +129,7 @@ export default function ContactModal() {
 
           <label htmlFor="phone">
             Telefone
-            <input
-              id="phone"
-              type="tel"
-              onChange={e => setPhone(e.target.value)}
-              value={phone}
-            />
+            <input id="phone" type="tel" onChange={handlePhone} value={phone} />
           </label>
         </div>
       </Modal>
